@@ -75,7 +75,7 @@ export async function signUp(email, password) {
     });
 
     // ✅ 회원가입 후 로그인 페이지(index.html)로 이동
-    window.location.href = "index.html"; 
+    window.location.href = "../../../index.html"; 
 
   } catch (error) {
     console.error("error:101 회원가입 실패:", error.message);
@@ -126,7 +126,7 @@ export async function logOut() {
     // ✅ 로컬 저장 데이터 삭제
     localStorage.removeItem("userProfile");
 
-    window.location.href = "index.html"; // 로그아웃 후 로그인 화면으로 이동
+    window.location.href = "../../../index.html"; // 로그아웃 후 로그인 화면으로 이동
   } catch (error) {
     console.error("❌ 로그아웃 실패:", error.message);
     alert("🚨 로그아웃 실패: " + error.message);
