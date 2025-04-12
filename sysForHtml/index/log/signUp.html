@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>회원가입 - MiniTrickcalGames</title>
+  <style>
+    @font-face {
+      font-family: 'OneStoreMobileGothicPop';
+      src: url('OneStoreMobileGothicPop.ttf') format('truetype');
+    }
+
+    /* 전체 화면 스타일 */
+    body {
+      font-family: 'OneStoreMobileGothicPop', Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    /* 뒤로가기 버튼 */
+    .back-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #ccc;
+      color: black;
+      padding: 5px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .back-button:hover {
+      background: #aaa;
+    }
+
+    /* 제목 */
+    .title {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* 입력 필드 */
+    input {
+      display: block;
+      width: 250px;
+      padding: 10px;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* 체크박스 */
+    .policy-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    /* 버튼 */
+    button {
+      width: 250px;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    /* 반응형 */
+    @media (max-width: 400px) {
+      input, button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 돌아가기 버튼 -->
+  <a href="index.html" class="back-button">← 뒤로가기</a>
+
+  <!-- 회원가입 제목 -->
+  <div class="title">MiniTrickcalGames 회원가입</div>
+
+  <!-- 입력 필드 -->
+  <input type="email" id="email" placeholder="이메일">
+  <input type="password" id="password" placeholder="비밀번호">
+  <input type="password" id="confirm-password" placeholder="비밀번호 확인">
+
+  <!-- 정책 동의 -->
+  <div class="policy-container">
+    <input type="checkbox" id="policy-check">
+    <label for="policy-check">
+      <a href="privacy.html" target="_blank">개인정보 처리방침</a>에 동의합니다.
+    </label>
+  </div>
+
+  <!-- 계정 만들기 버튼 -->
+  <button id="signup-btn" disabled>계정 만들기</button>
+
+  <script type="module">
+    import { signUp } from "./auth.js";
+
+    document.getElementById("policy-check").addEventListener("change", () => {
+      document.getElementById("signup-btn").disabled = !document.getElementById("policy-check").checked;
+    });
+
+    document.getElementById("signup-btn").addEventListener("click", () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirm-password").value;
+
+      if (password !== confirmPassword) {
+        alert("비밀번호가 일치하지 않습니다.");
+        return;
+      }
+
+      signUp(email, password);
+    });
+  </script>
+
+</body>
+</html>
