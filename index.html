@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MiniTrickcalGames - 시작하기 로그인</title>
+  <style>
+    @font-face {
+      font-family: 'OneStoreMobileGothicPop';
+      src: url('OneStoreMobileGothicPop.ttf') format('truetype');
+    }
+    /* 전체 화면 스타일 */
+    body {
+      font-family:'OneStoreMobileGothicPop', Arial, sans-serif;
+      background-color: white;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    /* 이미지 스타일 */
+    .logo {
+      margin-bottom: 10px;
+      display: block;
+      max-width: 300px;
+      height: auto;
+    }
+
+    /* 제목 스타일 */
+    .title {
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* 입력 필드 스타일 */
+    input {
+      display: block;
+      width: 250px;
+      padding: 10px;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+
+    /* 버튼 컨테이너 */
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* 버튼 스타일 */
+    button {
+      width: 250px;
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 9px;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    #signup-btn {
+      background-image: url('buttons/but1.png'); /* 이미지 파일 경로 */
+      background-size: cover; /* 이미지가 버튼에 꽉 차게 */
+      background-position: left 10px bottom -130px; /* 왼쪽과 아래로 조정 */
+      color: black;
+    }
+
+    #signin-btn {
+      background-image: url('buttons/but2.png'); /* 이미지 파일 경로 */
+      background-size: cover; /* 이미지가 버튼에 꽉 차게 */
+      background-position: left 10px bottom -130px; /* 왼쪽과 아래로 조정 */
+      color: black;
+    }
+
+    #logout-btn {
+      background-image: url('buttons/but3.png'); /* 이미지 파일 경로 */
+      background-size: cover; /* 이미지가 버튼에 꽉 차게 */
+      background-position: left 10px bottom -130px; /* 왼쪽과 아래로 조정 */
+      color: black;
+      margin-top: 20px;
+    }
+
+    .footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.9); /* 반투명 흰색 배경 */
+      text-align: center;
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .video-small {
+      width: 100px; /* 원하는 크기로 조절 */
+      height: auto; /* 비율 유지 */
+      display: block;
+      margin: 0 auto; /* 가운데 정렬 */
+    }
+
+    /* 반응형 처리 */
+    @media (max-width: 400px) {
+      input, button {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 로고 이미지 -->
+  <video class="video-small" autoplay loop muted playsinline>
+    <source src="komi.mp4" class="logo" type="video/mp4">
+    브라우저가 video 태그를 지원하지 않습니다.
+  </video>
+
+  <!-- 제목 -->
+  <div class="title">게임 시작 로그인</div>
+
+  <!-- 입력 필드 -->
+  <input type="email" id="email" placeholder="이메일 주소(ex@ex.com)">
+  <input type="password" id="password" placeholder="설정한 비밀번호">
+
+  <!-- 버튼들 -->
+  <div class="button-container">
+    <button id="signup-btn">회원가입</button>
+    <button id="signin-btn">로그인</button>
+    <button id="logout-btn">로그아웃</button>
+  </div>
+
+  <div class="footer">
+    <p>Trickcal copyrighted by EPIDGames. MiniTrickcalGames powered by Snowii</p>
+    <p>이 사이트는 공식이 아님을 알립니다</p><a href="privacy.html" style="color: red; text-decoration: underline;" target="_blank">개인정보 처리방침</a>
+  </div>
+
+  <!-- Firebase auth.js 연결 -->
+  <script type="module">
+  import { signUp, signIn, logOut } from "./log/js/auth.js";
+
+  document.getElementById("signup-btn").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    signUp(email, password);
+  });
+
+  document.getElementById("signin-btn").addEventListener("click", () => {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    signIn(email, password);
+  });
+
+  document.getElementById("logout-btn").addEventListener("click", () => {
+    logOut();
+  });
+  </script>
+  <script>
+    document.getElementById("signup-btn").addEventListener("click", () => {
+      window.location.href = "signUp.html";
+    });
+  </script>
+
+</body>
+</html>
