@@ -17,25 +17,32 @@ import {
 
 import { getStorage } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-storage.js";  // ✅ Firebase Storage 추가
 
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-analytics.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.3.0/firebase-analytics.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyAiImFY0WuuxbUfKR8muabE7jht0_xJgLE",
-    authDomain: "the-lastcake.firebaseapp.com",
-    projectId: "the-lastcake",
-    storageBucket: "the-lastcake.firebasestorage.app",
-    messagingSenderId: "613454839396",
-    appId: "1:613454839396:web:dc0ac0299f8549e97c6971",
-    measurementId: "G-VRSGZLZNX9"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyAiImFY0WuuxbUfKR8muabE7jht0_xJgLE",
+  authDomain: "the-lastcake.firebaseapp.com",
+  projectId: "the-lastcake",
+  storageBucket: "the-lastcake.firebasestorage.app",
+  messagingSenderId: "613454839396",
+  appId: "1:613454839396:web:dc0ac0299f8549e97c6971",
+  measurementId: "G-VRSGZLZNX9"
+};
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+console.log("Firebase App Initialized: ", app);
+const analytics = getAnalytics(app);
+
+try {
+  console.log("Analytics Initialized:", analytics);
+} catch (error) {
+  console.error("Analytics Initialization Error:", error);
+}
 
 // ✅ Firebase 초기화
 const auth = getAuth(app);
