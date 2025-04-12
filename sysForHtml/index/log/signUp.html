@@ -115,7 +115,7 @@
   <button id="signup-btn" disabled>계정 만들기</button>
 
   <script type="module">
-    import { signUp } from "./auth.js";
+    import { signUp } from "../log/js/auth.js";
 
     document.getElementById("policy-check").addEventListener("change", () => {
       document.getElementById("signup-btn").disabled = !document.getElementById("policy-check").checked;
