@@ -1,0 +1,20 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+</head>
+<body>
+  <h2>로그인 성공! 대시보드입니다.</h2>
+  <button onclick="logout()">로그아웃</button>
+
+  <script>
+    async function logout() {
+      const res = await fetch('/logout', { method: 'POST' });
+      const data = await res.json();
+      if (data.success) location.href = '/';
+    }
+  </script>
+</body>
+</html>
